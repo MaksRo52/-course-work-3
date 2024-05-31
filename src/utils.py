@@ -1,4 +1,3 @@
-from src.operations import Operation
 import json
 
 
@@ -23,13 +22,6 @@ def operations_sort_date():
     return sorted(lst, key=lambda x: x["date"], reverse=True)
 
 
-def show_last_operation(number=5) :
+def show_last_operation(number=5):
     """Показать последние 5 операций"""
     return [x for x in operations_sort_date()[0: number + 1] if x["state"] == "EXECUTED"]
-
-
-def operations_lists():
-    operation_list = []
-    for i in show_last_operation():
-        operation_list.append(Operation(i["state"], i["date"], i["operationAmount"], i["description"], i["from_"], i["to"]))
-    return operation_list
